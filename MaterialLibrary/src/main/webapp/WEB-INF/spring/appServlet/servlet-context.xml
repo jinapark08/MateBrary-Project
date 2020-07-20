@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- web.xml파일에 설정한 url패턴에 해당하는 요청이 왔을 때 사용할 bean을 설정하는 파일 -->
+
+	<!-- Spring MVC project에서 사용하는 50여가지의 어노테이션을 사용할 수 있도록 해주는 설정 -->
+	<!-- 절대로 삭제하면 안됨!!!!!!!!!! -->
+	<annotation-driven />
+
+	<!-- 변화가 거의 없는 파일들을 저장해 두면 캐싱을해서 이용할 수 있도록 해주는 설정 기본은 root(webapp,webContent)디렉토리의 
+		resources 캐싱 시간을 설정하는 것도 가능 -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Controller에서 forwarding하는 view 이름을 넘겨주었을 때 실제 사용할 View를 결정짓는 설정 (리다이렉트 
+		할때는 오지않음 ) = Controller 에서 jsp로 포워딩하고자 할 때 사용하는 뷰 리졸버 -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="1" />
+	</beans:bean>
+
+	<!-- jsp를 제외한 출력을 위한 설정 -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0" />
+	</beans:bean>
+
+	<!-- bean을 자동 생성해주는 root 패키지 설정 클래스를 만들 때는 이 패키지 안에 만드는 것을 권장 다른 패키지를 만들었다면 
+		다른 패키지도 추가해주면 됩니다. -->
+	<context:component-scan base-package="kr.co.pk" />
+
+	<!-- Controller가 처리하지 못하는 요청을 WAS 가 처리하도록 해주는 설정 -->
+	<default-servlet-handler />
+
+	<!-- 파일업로드를 위한 설정 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10000000" />
+	</beans:bean>
+
+</beans:beans>
