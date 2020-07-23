@@ -34,7 +34,7 @@
 	</context-param>
 
 
-	<!-- url패턴에 따라서 사용할 스프링 설정 파일을 지정하는 태그 -->
+	<!-- url패턴에 따라서 사용하는 서블릿을 설정하고 스프링 설정 파일의 경로를 설정하는 태그 -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet

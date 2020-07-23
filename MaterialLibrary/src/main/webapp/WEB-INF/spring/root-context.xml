@@ -30,24 +30,26 @@
 			<value>5586</value>
 		</property>
 	</bean>
+	
+	
 
 	<!-- MyBatis 설정 -->
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		
+		<!-- mappers디렉토리 안의 모든 디렉토리와 모든xml 파일  -->
 		<property name="mapperLocations"
 			value="classpath:mappers/**/*.xml" />
 	</bean>
+	
+	
+	
 	<bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
-	<!-- 트랜잭션 사용을 위한 부분 -->
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
+	
 	
 
 

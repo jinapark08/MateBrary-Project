@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3>Welcome! Material Library :)</h3>
-	<a href="${pageContext.request.contextPath}/member/user_gen">일반회원 회원가입</a>
+	<a href="${pageContext.request.contextPath}/member/user">일반회원 회원가입</a>
 	<br />
 
 </body>

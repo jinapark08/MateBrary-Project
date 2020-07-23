@@ -14,13 +14,19 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-	<!-- <repositories> <repository> <id>oracle</id> <name>ORACLE JDBC Repository</name> 
-		<url>http://maven.jahia.org/maven2</url> </repository> </repositories> -->
+	
+	<!-- <repositories> 
+	    <repository> 
+	        <id>oracle</id> 
+        	<name>ORACLE JDBC Repository</name>   
+		    <url>http://maven.jahia.org/maven2</url> 
+		</repository> 
+	</repositories> -->
 
 
 
 	<dependencies>
-		<!-- 비밀번호 암호화를 위한 라이브러리 -->
+		<!--복호화가 불가능한 비밀번호 암호화를 위한 라이브러리 -->
 		<dependency>
 			<groupId>org.mindrot</groupId>
 			<artifactId>jbcrypt</artifactId>
